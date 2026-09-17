@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наш Саня всем Саня Саня</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Permanent+Marker&family=Roboto+Condensed:ital,wght@0,400;0,700;1,400&display=swap');
+
+        :root {
+            --fc-yellow: #ffde17;
+            --fc-red: #e62222;
+            --fc-dark: #121614;
+            --fc-gray: #2d3330;
+            --fc-green: #385e38;
+            --fc-mud: #5a4d41;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--fc-dark);
+            color: #f5f5f5;
+            font-family: 'Roboto Condensed', sans-serif;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(56, 94, 56, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(90, 77, 65, 0.2) 0%, transparent 50%);
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 4px solid var(--fc-gray);
+            background: rgba(18, 22, 20, 0.85);
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
+
+        /* FarCry 6 Style Spray/Stencil Header */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            border-bottom: 3px dashed var(--fc-red);
+            padding-bottom: 30px;
+        }
+
+        header::before {
+            content: 'YARA AGRO-REVOLUTION';
+            position: absolute;
+            top: -10px;
+            left: 5px;
+            font-size: 12px;
+            background: var(--fc-red);
+            color: #fff;
+            padding: 2px 6px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transform: rotate(-1deg);
+        }
+
+        h1 {
+            font-family: 'Permanent Marker', 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            color: var(--fc-yellow);
+            text-transform: uppercase;
+            line-height: 1.1;
+            text-shadow: 3px 3px 0px var(--fc-red), -1px -1px 0px #000;
+            letter-spacing: 1px;
+            transform: rotate(-1.5deg);
+            margin-top: 15px;
+        }
+
+        .tagline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+            background: var(--fc-green);
+            display: inline-block;
+            padding: 5px 15px;
+            margin-top: 15px;
+            text-transform: uppercase;
+            transform: rotate(1deg);
+            box-shadow: 4px 4px 0px #000;
+        }
+
+        /* Navigation / Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .card {
+            background: var(--fc-gray);
+            border-left: 8px solid var(--fc-yellow);
+            padding: 20px;
+            position: relative;
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.01);
+        }
+
+        .card.priority-red {
+            border-left-color: var(--fc-red);
+        }
+
+        .card.priority-green {
+            border-left-color: var(--fc-green);
+        }
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        /* Specific section icons/markers disguised as stencil fonts */
+        h2::before {
+            content: '// ';
+            color: var(--fc-yellow);
+        }
+
+        .card.priority-red h2::before {
+            content: '★ ';
+            color: var(--fc-red);
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #dcdcdc;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(255,255,255,0.05);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        li::before {
+            content: '➢';
+            position: absolute;
+            left: 0;
+            color: var(--fc-yellow);
+        }
+
+        /* Unique Garden & FarCry 6 UI Blends */
+        .status-badge {
+            display: inline-block;
+            background: var(--fc-red);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .status-badge.ready {
+            background: var(--fc-green);
+        }
+
+        .intel-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--fc-gray);
+            font-size: 0.9rem;
+            color: #777;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Наш Саня всем Саня Саня</h1>
+            <div class="tagline">Огородное Сопротивление • Libertad de Саня</div>
+        </header>
+
+        <div class="grid">
+            
+            <!-- ДЕНЬ РОЖДЕНИЯ -->
+            <div class="card priority-red">
+                <h2>Главное Событие: День Рождения</h2>
+                <div class="status-badge">Секретные данные Революции</div>
+                <p><strong>Дата Х:</strong> Засекречено, но празднуется с размахом, превосходящим перевороты в Яре.</p>
+                <p>Каждый год в этот день мобилизуются все стратегические запасы домашних наливок, маринованных огурчиков и лучшего шашлыка.</p>
+                <div class="intel-box">
+                    Цель: Поздравить Саняру так, чтобы эхо праздника долетело до Антона Кастильо.
+                </div>
+            </div>
+
+            <!-- УБОРОЧНАЯ КАМПАНИЯ НА ОГОРОДЕ -->
+            <div class="card priority-red">
+                <h2>Операция «Уборочная Кампания»</h2>
+                <div class="status-badge ready">Фаза: Активный Сбор Урожая</div>
+                <p>Огород Сани — это не просто грядки, это главный арсенал тактического продовольствия Сопротивления.</p>
+                <ul>
+                    <li><strong>Картофельный фронт:</strong> Зачистка территории от колорадских оккупантов, штурм кустов лопатами.</li>
+                    <li><strong>Томатный сектор:</strong> Сбор спелых калибров, консервация в банки «особого назначения».</li>
+                    <li><strong>Кабачковая угроза:</strong> Ликвидация кабачков гигантских размеров путем раздачи соседям.</li>
+                </ul>
+                <div class="intel-box">
+                    Приказ командира: Ни один огурец не должен остаться не засоленным!
+                </div>
+            </div>
+
+            <!-- СОБЫТИЯ -->
+            <div class="card">
+                <h2>Хроника Событий (Лента Интел)</h2>
+                <p>Ключевые вехи и боевые вылазки нашего Сани:</p>
+                <ul>
+                    <li><strong>Весенний прорыв:</strong> Генеральная вспашка земли, закупка элитных семян на черном рынке.</li>
+                    <li><strong>Шашлычный ультиматум:</strong> Каждые выходные — победа над голодом и дегустация крафтовых солений.</li>
+                    <li><strong>Пятничная тактическая разведка:</strong> Встречи в гараже для обсуждения планов глобального благоустройства.</li>
+                </ul>
+            </div>
+
+            <!-- СЕМЬЯ И ДЕТИ -->
+            <div class="card priority-green">
+                <h2>Надежный Тыл: Семья и Дети</h2>
+                <div class="status-badge ready">Высший приоритет охраны</div>
+                <p>Главный штаб и верные соратники Сани, которые поддерживают его во всех огородных и жизненных авантюрах.</p>
+                <p>Верная команда, готовая и в огороде спину гнуть, и на праздничном банкете прикрывать фланги.</p>
+                <div class="intel-box">
+                    Статус: Семья — это святое. Ради них Саня готов перекопать даже целину.
+                </div>
+            </div>
+
+            <!-- ЛЮБИМЫЕ ДРУЗЬЯ -->
+            <div class="card">
+                <h2>Амигос & Любимые Друзья</h2>
+                <p>Настоящие партизаны («Guerrillas»), готовые прийти на помощь по первому свисту:</p>
+                <ul>
+                    <li><strong>Диверсионный отряд:</strong> Помогают копать картошку (и уничтожать запасы из погреба).</li>
+                    <li><strong>Группа поддержки:</strong> Эксперты по дегустации огородных культур и душевным разговорам до рассвета.</li>
+                    <li><strong>Верные амигос:</strong> Всегда на связи, если нужно достать редкие удобрения или просто зажечь.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <footer>
+            © 2026 Свободный Огород Сани. Viva Libertad! Viva Саня!
+        </footer>
+    </div>
+
+</body>
+</html>
